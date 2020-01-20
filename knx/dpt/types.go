@@ -91,7 +91,7 @@ func (d DPT_1003) String() string {
 	}
 }
 
-// DPT_1009 represents DPT 1.0008
+// DPT_1009 represents DPT 1.008
 type DPT_1008 bool
 
 func (d DPT_1008) Pack() []byte {
@@ -100,6 +100,18 @@ func (d DPT_1008) Pack() []byte {
 
 func (d *DPT_1008) Unpack(data []byte) error {
 	return unpackB1(data, (*bool)(d))
+}
+
+func (d DPT_1008) Unit() string {
+	return ""
+}
+
+func (d DPT_1008) String() string {
+	if d {
+		return "Down"
+	} else {
+		return "Up"
+	}
 }
 
 // DPT_1009 represents DPT 1.009 / OpenClose.
@@ -229,6 +241,25 @@ func (d DPT_5004) Unit() string {
 
 func (d DPT_5004) String() string {
 	return fmt.Sprintf("%.2f%%", float32(d))
+}
+
+// DPT_5010 represents DPT 9.010 / Value_1_Ucount.
+type DPT_5010 uint8
+
+func (d DPT_5010) Pack() []byte {
+	return packU8(uint8(d))
+}
+
+func (d *DPT_5010) Unpack(data []byte) error {
+	return unpackU8(data, (*uint8)(d))
+}
+
+func (d DPT_5010) Unit() string {
+	return ""
+}
+
+func (d DPT_5010) String() string {
+	return fmt.Sprintf("%x", uint8(d))
 }
 
 // DPT_9001 represents DPT 9.001 / Temperature.
