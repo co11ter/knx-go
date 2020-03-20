@@ -160,6 +160,25 @@ func (d DPT_1010) String() string {
 	}
 }
 
+// DPT_1017 represents DPT 1.017 / /Trigger.
+type DPT_1017 bool
+
+func (d DPT_1017) Pack() []byte {
+	return packB1(bool(d))
+}
+
+func (d *DPT_1017) Unpack(data []byte) error {
+	return unpackB1(data, (*bool)(d))
+}
+
+func (d DPT_1017) Unit() string {
+	return ""
+}
+
+func (d DPT_1017) String() string {
+	return "Trigger"
+}
+
 // DPT_5001 represents DPT 5.001 / Scaling.
 type DPT_5001 float32
 
